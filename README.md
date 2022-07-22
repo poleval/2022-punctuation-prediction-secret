@@ -19,134 +19,24 @@ The goal of the present task is to provide a solution for predicting punctuation
 3. SPOKES, a subset of the Spokes corpus [7]
 
 Table 1 below summarizes the size of the three subsets in terms of dialogs, words and duration of recordings.
+| Subset | Corpus               | Files | Words  | Audio [s] | Speakers | License        |
+| ---    | ---                  | ---   | ---    | ---       | ---      | ---            |
+| CBIZ   | DiaBiz               | 69    | 36 250 | 16 916    | 14       | CC-BY-SA-NC-ND |
+| VC     | Video conversations	| 8	    | 44 656 | 17 123    | 20       | CC-BY-NC       |
+| Spokes | Casual conversations | 13    | 42 730 | 20 583    | 19       | CC-BY-NC       |
 
-
-<table>
-  <tr>
-   <td><strong>Subset</strong>
-   </td>
-   <td><strong>Corpus</strong>
-   </td>
-   <td><strong>Files</strong>
-   </td>
-   <td><strong>Words</strong>
-   </td>
-   <td><strong>Audio [s]</strong>
-   </td>
-   <td><strong>Speakers</strong>
-   </td>
-   <td><strong>License</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>CBIZ
-   </td>
-   <td>DiaBiz
-   </td>
-   <td>69
-   </td>
-   <td>36 250
-   </td>
-   <td>16 916
-   </td>
-   <td>14
-   </td>
-   <td>CC-BY-SA-NC-ND
-   </td>
-  </tr>
-  <tr>
-   <td>VC
-   </td>
-   <td>Video conversations
-   </td>
-   <td>8
-   </td>
-   <td>44 656
-   </td>
-   <td>17 123
-   </td>
-   <td>20
-   </td>
-   <td>CC-BY-NC
-   </td>
-  </tr>
-  <tr>
-   <td>Spokes
-   </td>
-   <td>Casual conversations
-   </td>
-   <td>13
-   </td>
-   <td>42 730
-   </td>
-   <td>20 583
-   </td>
-   <td>19
-   </td>
-   <td>CC-BY-NC
-   </td>
-  </tr>
-</table>
-
-
-Table 1 Overall statistics of the corpus.
+**Table 1. Overall statistics of the corpus.**
 
 The full dataset has been split into three subsets as summarized in Table 2 below.
 
 
-<table>
-  <tr>
-   <td><strong>Set</strong>
-   </td>
-   <td><strong>Files</strong>
-   </td>
-   <td><strong>Words</strong>
-   </td>
-   <td><strong>Audio [s]</strong>
-   </td>
-   <td><strong>License</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>Train
-   </td>
-   <td>69
-   </td>
-   <td>98 095
-   </td>
-   <td>44 030
-   </td>
-   <td>CC-BY-SA-NC-ND
-   </td>
-  </tr>
-  <tr>
-   <td>Dev
-   </td>
-   <td>11
-   </td>
-   <td>12 563
-   </td>
-   <td>4 718
-   </td>
-   <td>CC-BY-NC
-   </td>
-  </tr>
-  <tr>
-   <td>Test
-   </td>
-   <td>10
-   </td>
-   <td>12 978
-   </td>
-   <td>5 874
-   </td>
-   <td>CC-BY-NC
-   </td>
-  </tr>
-</table>
+| Set   | Files | Words  | Audio [s] | License        |
+|-------|-------|--------|-----------|----------------|
+| Train | 69    | 98 095 | 44 030    | CC-BY-SA-NC-ND |
+| Dev   | 11    | 12 563 | 4 718     | CC-BY-NC       |
+| Test  | 10    | 12 978 | 5 874     | CC-BY-NC       |
 
-
-Table 2 Training/ development/ test set statistics.
+**Table 2. Training / development / test set statistics.**
 
 The punctuation annotation guidelines were developed in the CLARIN-BIZ project by Karasińska et al. [10].
 
@@ -163,475 +53,51 @@ Fig. 1 Overview of the punctuation prediction task.
 
 The punctuation marks evaluated as part of the task are listed in Table 3 below. Blanks are marked as spaces. The distribution of explicit punctuation symbols in the training and development portion of the dataset provided is shown in Tables 3-6.
 
-<table>
-  <tr>
-   <td>
-   </td>
-   <td><strong>Symbol</strong>
-   </td>
-   <td><strong>Mean per dialog</strong>
-   </td>
-   <td><strong>Median</strong>
-   </td>
-   <td><strong>Max</strong>
-   </td>
-   <td><strong>Sum</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><strong>fullstop</strong>
-   </td>
-   <td>.
-   </td>
-   <td>111.15
-   </td>
-   <td>59
-   </td>
-   <td>1 157
-   </td>
-   <td>8 892
-   </td>
-  </tr>
-  <tr>
-   <td><strong>comma</strong>
-   </td>
-   <td>,
-   </td>
-   <td>161.51
-   </td>
-   <td>69
-   </td>
-   <td>1 738
-   </td>
-   <td>12 921
-   </td>
-  </tr>
-  <tr>
-   <td><strong>question_mark</strong>
-   </td>
-   <td>?
-   </td>
-   <td>24.36
-   </td>
-   <td>11
-   </td>
-   <td>229
-   </td>
-   <td>1 949
-   </td>
-  </tr>
-  <tr>
-   <td><strong>exclamation_mark</strong>
-   </td>
-   <td>!
-   </td>
-   <td>3.46
-   </td>
-   <td>4
-   </td>
-   <td>45
-   </td>
-   <td>277
-   </td>
-  </tr>
-  <tr>
-   <td><strong>hyphen</strong>
-   </td>
-   <td>-
-   </td>
-   <td>0.64
-   </td>
-   <td>25
-   </td>
-   <td>50
-   </td>
-   <td>51
-   </td>
-  </tr>
-  <tr>
-   <td><strong>ellipsis</strong>
-   </td>
-   <td>…
-   </td>
-   <td>63.28
-   </td>
-   <td>11
-   </td>
-   <td>1 833
-   </td>
-   <td>5 062
-   </td>
-  </tr>
-  <tr>
-   <td><strong>words</strong>
-   </td>
-   <td>
-   </td>
-   <td>1 383.23
-   </td>
-   <td>569
-   </td>
-   <td>16 528
-   </td>
-   <td>110 658
-   </td>
-  </tr>
-</table>
-
+|                  | Symbol | Mean per dialog | Median | Max    | Sum     |
+|------------------|--------|-----------------|--------|--------|---------|
+| fullstop         | .      | 111.15          | 59     | 1 157  | 8 892   |
+| comma            | ,      | 161.51          | 69     | 1 738  | 12 921  |
+| question_mark    | ?      | 24.36           | 11     | 229    | 1 949   |
+| exclamation_mark | !      | 3.46            | 4      | 45     | 277     |
+| hyphen           | -      | 0.64            | 25     | 50     | 51      |
+| ellipsis         | …      | 63.28           | 11     | 1 833  | 5 062   |
+| words            |        | 1 383.23        | 569    | 16 528 | 110 658 |
 
 **Table 3. Punctuation for raw text (all subcorpora)**
 
-<table>
-  <tr>
-   <td>
-   </td>
-   <td><strong>Symbol</strong>
-   </td>
-   <td><strong>Mean per dialog</strong>
-   </td>
-   <td><strong>Median</strong>
-   </td>
-   <td><strong>Max</strong>
-   </td>
-   <td><strong>Sum</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><strong>fullstop</strong>
-   </td>
-   <td>.
-   </td>
-   <td>58.06
-   </td>
-   <td>54
-   </td>
-   <td>213
-   </td>
-   <td>3 600
-   </td>
-  </tr>
-  <tr>
-   <td><strong>comma</strong>
-   </td>
-   <td>,
-   </td>
-   <td>70.61
-   </td>
-   <td>59
-   </td>
-   <td>388
-   </td>
-   <td>4 378
-   </td>
-  </tr>
-  <tr>
-   <td><strong>question_mark</strong>
-   </td>
-   <td>?
-   </td>
-   <td>11.26
-   </td>
-   <td>10
-   </td>
-   <td>35
-   </td>
-   <td>698
-   </td>
-  </tr>
-  <tr>
-   <td><strong>exclamation_mark</strong>
-   </td>
-   <td>!
-   </td>
-   <td>0.34
-   </td>
-   <td>1
-   </td>
-   <td>5
-   </td>
-   <td>21
-   </td>
-  </tr>
-  <tr>
-   <td><strong>hyphen</strong>
-   </td>
-   <td>-
-   </td>
-   <td>0.02
-   </td>
-   <td>1
-   </td>
-   <td>1
-   </td>
-   <td>1
-   </td>
-  </tr>
-  <tr>
-   <td><strong>ellipsis</strong>
-   </td>
-   <td>…
-   </td>
-   <td>12.29
-   </td>
-   <td>9
-   </td>
-   <td>54
-   </td>
-   <td>762
-   </td>
-  </tr>
-  <tr>
-   <td><strong>words</strong>
-   </td>
-   <td>
-   </td>
-   <td>528.74
-   </td>
-   <td>483
-   </td>
-   <td>2 180
-   </td>
-   <td>32 782
-   </td>
-  </tr>
-</table>
-
+|                  | Symbol | Mean per dialog | Median | Max   | Sum    |
+|------------------|--------|-----------------|--------|-------|--------|
+| fullstop         | .      | 58.06           | 54     | 213   | 3 600  |
+| comma            | ,      | 70.61           | 59     | 388   | 4 378  |
+| question_mark    | ?      | 11.26           | 10     | 35    | 698    |
+| exclamation_mark | !      | 0.34            | 1      | 5     | 21     |
+| hyphen           | -      | 0.02            | 1      | 1     | 1      |
+| ellipsis         | …      | 12.29           | 9      | 54    | 762    |
+| words            |        | 528.74          | 483    | 2 180 | 32 782 |
 
 **Table 4. Punctuation for raw text (CBIZ)**
 
-<table>
-  <tr>
-   <td>
-   </td>
-   <td><strong>Symbol</strong>
-   </td>
-   <td><strong>Mean per dialog</strong>
-   </td>
-   <td><strong>Median</strong>
-   </td>
-   <td><strong>Max</strong>
-   </td>
-   <td><strong>Sum</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><strong>fullstop</strong>
-   </td>
-   <td>.
-   </td>
-   <td>411.86
-   </td>
-   <td>384
-   </td>
-   <td>1 157
-   </td>
-   <td>2 883
-   </td>
-  </tr>
-  <tr>
-   <td><strong>comma</strong>
-   </td>
-   <td>,
-   </td>
-   <td>737.86
-   </td>
-   <td>577
-   </td>
-   <td>1 738
-   </td>
-   <td>5 165
-   </td>
-  </tr>
-  <tr>
-   <td><strong>question_mark</strong>
-   </td>
-   <td>?
-   </td>
-   <td>85.29
-   </td>
-   <td>41
-   </td>
-   <td>229
-   </td>
-   <td>597
-   </td>
-  </tr>
-  <tr>
-   <td><strong>exclamation_mark</strong>
-   </td>
-   <td>!
-   </td>
-   <td>10.43
-   </td>
-   <td>5
-   </td>
-   <td>43
-   </td>
-   <td>73
-   </td>
-  </tr>
-  <tr>
-   <td><strong>hyphen</strong>
-   </td>
-   <td>-
-   </td>
-   <td>/
-   </td>
-   <td>/
-   </td>
-   <td>/
-   </td>
-   <td>/
-   </td>
-  </tr>
-  <tr>
-   <td><strong>ellipsis</strong>
-   </td>
-   <td>…
-   </td>
-   <td>514.00
-   </td>
-   <td>365
-   </td>
-   <td>1 833
-   </td>
-   <td>3 598
-   </td>
-  </tr>
-  <tr>
-   <td><strong>words</strong>
-   </td>
-   <td>
-   </td>
-   <td>5 704.14
-   </td>
-   <td>4 398
-   </td>
-   <td>9 469
-   </td>
-   <td>39 929
-   </td>
-  </tr>
-</table>
-
+|                  | Symbol | Mean per dialog | Median | Max   | Sum    |
+|------------------|--------|-----------------|--------|-------|--------|
+| fullstop         | .      | 411.86          | 384    | 1 157 | 2 883  |
+| comma            | ,      | 737.86          | 577    | 1 738 | 5 165  |
+| question_mark    | ?      | 85.29           | 41     | 229   | 597    |
+| exclamation_mark | !      | 10.43           | 5      | 43    | 73     |
+| hyphen           | -      | /               | /      | /     | /      |
+| ellipsis         | …      | 514.00          | 365    | 1 833 | 3 598  |
+| words            |        | 5 704.14        | 4 398  | 9 469 | 39 929 |
 
 **Table 5. Punctuation for raw text (VC)**
 
-<table>
-  <tr>
-   <td>
-   </td>
-   <td><strong>Symbol</strong>
-   </td>
-   <td><strong>Mean per dialog</strong>
-   </td>
-   <td><strong>Median</strong>
-   </td>
-   <td><strong>Max</strong>
-   </td>
-   <td><strong>Sum</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><strong>fullstop</strong>
-   </td>
-   <td>.
-   </td>
-   <td>219.00
-   </td>
-   <td>193
-   </td>
-   <td>607
-   </td>
-   <td>2 409
-   </td>
-  </tr>
-  <tr>
-   <td><strong>comma</strong>
-   </td>
-   <td>,
-   </td>
-   <td>307.09
-   </td>
-   <td>313
-   </td>
-   <td>614
-   </td>
-   <td>3 378
-   </td>
-  </tr>
-  <tr>
-   <td><strong>question_mark</strong>
-   </td>
-   <td>?
-   </td>
-   <td>59.45
-   </td>
-   <td>39
-   </td>
-   <td>150
-   </td>
-   <td>654
-   </td>
-  </tr>
-  <tr>
-   <td><strong>exclamation_mark</strong>
-   </td>
-   <td>!
-   </td>
-   <td>16.64
-   </td>
-   <td>10
-   </td>
-   <td>45
-   </td>
-   <td>183
-   </td>
-  </tr>
-  <tr>
-   <td><strong>hyphen</strong>
-   </td>
-   <td>-
-   </td>
-   <td>4.55
-   </td>
-   <td>50
-   </td>
-   <td>50
-   </td>
-   <td>50
-   </td>
-  </tr>
-  <tr>
-   <td><strong>ellipsis</strong>
-   </td>
-   <td>…
-   </td>
-   <td>63.82
-   </td>
-   <td>45
-   </td>
-   <td>186
-   </td>
-   <td>702
-   </td>
-  </tr>
-  <tr>
-   <td><strong>words</strong>
-   </td>
-   <td>
-   </td>
-   <td>3 449.73
-   </td>
-   <td>1 966
-   </td>
-   <td>16 528
-   </td>
-   <td>37 947
-   </td>
-  </tr>
-</table>
-
+|                  | Symbol | Mean per dialog | Median | Max    | Sum    |
+|------------------|--------|-----------------|--------|--------|--------|
+| fullstop         | .      | 219.00          | 193    | 607    | 2 409  |
+| comma            | ,      | 307.09          | 313    | 614    | 3 378  |
+| question_mark    | ?      | 59.45           | 39     | 150    | 654    |
+| exclamation_mark | !      | 16.64           | 10     | 45     | 183    |
+| hyphen           | -      | 4.55            | 50     | 50     | 50     |
+| ellipsis         | …      | 63.82           | 45     | 186    | 702    |
+| words            |        | 3 449.73        | 1 966  | 16 528 | 37 947 |
 
 **Table 6. Punctuation for raw text (Spokes)**
 
