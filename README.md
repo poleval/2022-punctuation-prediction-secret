@@ -103,149 +103,26 @@ The punctuation marks evaluated as part of the task are listed in Table 3 below.
 
 #### Data format
 
-We provide two types of data: text and audio data. Text data is provided in the JSON format. For Audio data we provide audio files as WAV files and transcripts with force-aligned timestamps.
+We provide two types of data: text and audio data. Text data is provided in the TSV format. For Audio data we provide audio files as WAV files and transcripts with force-aligned timestamps.
+
+WAVE files are provided as a separate download:
+
+* train and dev audio files: [http://poleval.pl/task1/train-dev-audio.zip](http://poleval.pl/task1/train-dev-audio.zip)
+* test audio files: [http://poleval.pl/task1/test-audio.zip](http://poleval.pl/task1/test-audio.zip)
 
 **Text data**
 
-The datasets are encoded in the JSON format. The name of each file corresponds to the document identifier with the corresponding extension. The JSON schema is shown below:
-
-
-```
-{
-   "type": "object",
-   "required": [
-       "file_id",
-       "file_name",
-       "annotator",
-       "subcorpus",
-       "audio_file",
-       "tiers"
-   ],
-   "properties": {
-       "file_id": {
-           "type": "string"
-       },
-       "file_name": {
-           "type": "string"
-       },
-       "annotator": {
-           "type": "number"
-       },
-       "subcorpus": {
-           "type": "string"
-       },
-       "audio_file": {
-           "type": "string"
-       },
-       "tiers": {
-           "type": "array",
-           "items": {
-               "type": "object",
-               "required": [
-                   "tier_id",
-                   "segments"
-               ],
-               "properties": {
-                   "tier_id": {
-                       "type": "string"
-                   },
-                   "segments": {
-                       "type": "array",
-                       "items": {
-                           "type": "object",
-                           "required": [
-                               "segment_id",
-                               "segment_sequence",
-                               "ts_start",
-                               "ts_end",
-                               "words"
-                           ],
-                           "properties": {
-                               "segment_id": {
-                                   "type": "string"
-                               },
-                               "segment_sequence": {
-                                   "type": "number"
-                               },
-                               "ts_start": {
-                                   "type": "number"
-                               },
-                               "ts_end": {
-                                   "type": "number"
-                               },
-                               "words": {
-                                   "type": "array",
-                                   "items": {
-                                       "type": "object",
-                                       "required": [
-                                           "word_id",
-                                           "word_sequence",
-                                           "contents",
-                                           "word",
-                                           "punctuation",
-                                           "space_after",
-                                           "ts_start",
-                                           "ts_end"
-                                       ],
-                                       "properties": {
-                                           "word_id": {
-                                               "type": "string"
-                                           },
-                                           "word_sequence": {
-                                               "type": "number"
-                                           },
-                                           "contents": {
-                                               "type": "string"
-                                           },
-                                           "word": {
-                                               "type": "string"
-                                           },
-                                           "punctuation": {
-                                               "type": "string"
-                                           },
-
-                                           "ts_start": {
-                                               "type": "number"
-                                           },
-                                           "ts_end": {
-                                               "type": "number"
-                                           }
-                                       }
-                                   }
-                               }
-                           }
-                       }
-                   }
-               }
-           }
-       }
-   }
-}
-```
-
+The datasets are encoded in the TSV format.
 
 Field descriptions:
 
-* “file_id”: unique file hash id
-* “file_name”: name of the file
-* “annotator”: number id of file annotator
-* “subcorpus”: file subcorpus name
-* “audio_file”: name of the audio file
-* “tiers”: list of speaker’ segments.
-* “tier_id”: unique id of the tier
-* “segments”: list of segments in the tier
-* “segment_id”: unique segment id
-* “segment_sequence”: segment position in the dialogue
-* “ts_start”: segment start timestamp in ms
-* “ts_end”: segment end timestamp in ms
-* “words”: list of words in segment
-* “word_id”: unique word id
-* “word_sequence”: word position in the dialogue segment
-* “contents”: word with punctuation mark
-* “word”: single word text
-* “punctuation”: punctuation mark after word if exists, else empty string “”
-* “ts_start”: word start timestamp in ms
-* “ts_end”: word end timestamp in ms
+* column 1: name of the audio file
+* column 2: unique segment id
+* column 3: segment text, where each word is separated by a single space
+
+The segment text (column 3) format is:
+
+* single word text:word start timestamp in ms-word end timestamp in ms
 
 #### Evaluation procedure
 
@@ -253,59 +130,7 @@ The baseline results will be provided in the final evaluation.
 
 ### Submission format
 
-Results are to be submitted in a JSON file with the format matching the input data. Files with results will be tested against the gold standard annotations kept in the file with the matching text ID in the file name.
-
-#### Example result directory structure
-
-For a given **poleval_text.test.tar.gz** the annotated transcriptions have the following file structure:
-
-```
-test/
-    cbiz_tc_11.json
-    cbiz_tc_14.json
-    cbiz_tc_66.json
-    ...
-```
-
-This is the directory structure for **poleval_wav.test.tar.gz**:
-
-```
-poleval_final_dataset_wav/
-    test/
-       audio/
-          CBIZ_VC_16.wav
-          CBIZ_VC_14.wav
-          ...
-```
-
-The correct submission format should be:
-
-```
-system_response/
-    cbiz_tc_11.json
-    cbiz_tc_14.json
-    cbiz_tc_66.json
-    ...
-```
-
-
-#### Schema validation
-
-Use _jsonschema_ to run a sanity check against the file with the results:[https://pypi.org/project/jsonschema/](https://pypi.org/project/jsonschema/)
-
-$ jsonschema -i result.json result.schema
-
-For multiple files:
-
-$ ls result/*.json | xargs -I{} jsonschema -i {} result.schema
-
-
-### Evaluation Script
-
-Evaluation script will be provided on the task's page.
-
-$ python3 evaluate.py gold_directory system_directory
-
+Results are to be submitted as plain text file, where each line corresponds to a single segment. The text should include the predicted punctuation marks.
 
 ### Metrics
 
